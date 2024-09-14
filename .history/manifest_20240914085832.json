@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Hide Consent SDK",
+  "version": "1.0",
+  "description": "Hides the onetrust-consent-sdk element on a specific URL.",
+  "permissions": [
+    "activeTab"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://specific-url.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
