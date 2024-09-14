@@ -10,12 +10,6 @@ function removeElements(selectors) {
     totalRemoved += elements.length; // Count the number of elements removed
   });
 
-  return totalRemoved; // Return the total number of elements removed
-}
-
-function removeCookieElements() {
-  let totalRemoved = 0;
-
   // Remove elements with IDs or class names that include "cookie"
   const cookieElements = document.querySelectorAll('[id*="cookie"], [class*="cookie"]');
   cookieElements.forEach(element => {
@@ -23,7 +17,7 @@ function removeCookieElements() {
   });
   totalRemoved += cookieElements.length; // Add count of removed cookie elements
 
-  return totalRemoved;
+  return totalRemoved; // Return the total number of elements removed
 }
 
 // List of IDs or class names to remove
@@ -36,7 +30,7 @@ const selectorsToRemove = [
 // Initialize a counter
 let intervalCount = 0;
 
-// Remove elements on page load and set interval for specific selectors
+// Remove elements on page load and set interval
 const keepLooking = setInterval(() => {
     const removedCount = removeElements(selectorsToRemove);
     intervalCount++;
@@ -47,13 +41,7 @@ const keepLooking = setInterval(() => {
     }
 }, 1000);
 
-// Set interval to remove cookie elements every 2 seconds
-const cookieInterval = setInterval(() => {
-    removeCookieElements();
-}, 2000);
-
 // Remove elements on every click
 document.addEventListener('click', () => {
   removeElements(selectorsToRemove);
-  removeCookieElements();
 });
